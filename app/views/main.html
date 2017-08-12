@@ -1,3 +1,36 @@
-<div class="current-weather">
-This is the weather.
+<div class="search" ng-show="showSearch">
+  <p class="lead">Find the REAL weather where you live:</p>
+  <p><input type="text" ng-model="city"><button ng-click="openCurrent()" class="btn btn-large btn-primary">Get REAL Weather!</button></p>
+  <p>(American cities only, please.)</p>
 </div>
+
+<div class="current" ng-show="showCurrent">
+  <h2>The REAL Weather for: {{city}}</h2>
+  <dl>
+    <dt>Currently</dt>
+    <dd>{{current.weather[0].main}}</dd>
+    <dd>{{current.weather[0].description}}</dd>
+    <dt>Temperature</dt>
+    <dd>{{current.main.temp}}</dd>
+    <dt>Wind</dt>
+    <dd>{{current.wind.speed}} mph at {{current.wind.deg}} degrees</dd>
+    <dt>Clouds</dt>
+    <dd>{{current.clouds.all}}%</dd>
+  </dl>
+  <p><button ng-click="openForecast()" class="btn btn-block btn-primary">View Full REAL Forecast</button></p>
+</div>
+
+
+<div class="forecast" ng-show="showForecast">
+  <h2>The REAL Forecast for: {{city}}</h2>
+  <dl ng-repeat="prediction in forecast.list" class="weather-forecast">
+    <dt>Forecast for {{prediction.dt*1000 | date:'MMM dd, yyyy'}}</dt>
+    <dd>{{prediction.weather[0].main}}</dd>
+    <dd>{{prediction.weather[0].description}}</dd>
+    <dt>Temperature</dt>
+    <dd>Min: {{prediction.temp.min}} &deg;F Max: {{prediction.temp.max}} &deg;F</dd>
+  </dl>
+  <p><button ng-click="openForecast()" class="btn btn-block btn-primary">View Current REAL Weather</button></p>
+</div>
+
+<p ng-show="!showSearch"><button class="btn btn-block btn-primary" ng-click="openSearch()">Get REAL Weather Information for Another City</button></p>
