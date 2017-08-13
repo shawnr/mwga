@@ -12,6 +12,7 @@ angular.module('mwgaApp')
     $scope.showCurrent = false;
     $scope.showForecast = false;
     $scope.showInvalidCity = false;
+    $scope.showNoQuery = false;
     $scope.dataLoading = false;
     $scope.showSearch = true;
 
@@ -52,21 +53,25 @@ angular.module('mwgaApp')
 
     $scope.openCurrent = function(){
         $scope.dataLoading = true;
-        $scope.cityCheck = citycheck.query({location: $scope.city});
 
-        $scope.cityCheck.$promise.then(function(data){
-            if (data.sys.country==='US'){
-                console.log('City is in the USA.');
-                $scope.showSearch = false;
-                $scope.showForecast = false;
-                $scope.showCurrent = true;
-                $scope.showInvalidCity = false;
-            } else {
-                $scope.showInvalidCity = true;
-                console.log('City is invalid. Not in the USA.');
-            }
-        });
-
+        if (!$scope.city){
+            $scope.showNoQuery = true;
+        } else {
+            $scope.showNoQuery = false;
+            $scope.cityCheck = citycheck.query({location: $scope.city});
+            $scope.cityCheck.$promise.then(function(data){
+                if (data.sys.country==='US'){
+                    console.log('City is in the USA.');
+                    $scope.showSearch = false;
+                    $scope.showForecast = false;
+                    $scope.showCurrent = true;
+                    $scope.showInvalidCity = false;
+                } else {
+                    $scope.showInvalidCity = true;
+                    console.log('City is invalid. Not in the USA.');
+                }
+            });
+        }
     }
     $scope.openForecast = function(){
         $scope.showSearch = false;

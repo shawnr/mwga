@@ -1,0 +1,10 @@
+/* Animated transitions for MWGA */
+
+div[ng-view].ng-enter, .ng-enter {
+    -webkit-animation: slideInLeft 0.5s;
+    animation: slideInLeft 0.5s;
+}
+div[ng-view].ng-leave, .ng-leave {
+    -webkit-animation: slideOutRight 0.5s;
+    animation: slideOutRight 0.5s;
+}

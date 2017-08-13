@@ -38,6 +38,11 @@
   <p class="lead">They probably don't even have weather over there. Please search for a different city.</p>
 </div>
 
+<div class="no-query" ng-show="showNoQuery">
+  <h2>Missing City Name. Sad!</h2>
+  <p class="lead">You must enter the name of an American city to find weather information.</p>
+</div>
+
 <p ng-show="!showSearch"><button class="btn btn-block btn-primary" ng-click="openSearch()">Get REAL Weather Information for Another City</button></p>
 
 
