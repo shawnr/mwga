@@ -8,13 +8,24 @@
  * Controller of the mwgaApp
  */
 angular.module('mwgaApp')
-  .controller('MainCtrl', function ($scope, current, forecast, citycheck, $localStorage) {
+  .controller('MainCtrl', function ($scope, current, forecast, citycheck, $localStorage, invalidCity, weatherText) {
     $scope.showCurrent = false;
     $scope.showForecast = false;
     $scope.showInvalidCity = false;
     $scope.showNoQuery = false;
     $scope.dataLoading = false;
     $scope.showSearch = true;
+
+    // Variable messages initialization
+    $scope.invalidMessage = '';
+    $scope.weatherText = weatherText;
+
+    $scope.currHour = (new Date()).getHours();
+    if ($scope.currHour > 5 && $scope.currHour < 17) {
+        $scope.currDayTime = 'day';
+    } else {
+        $scope.currDayTime = 'night';
+    }
 
     var now = Date.now();
     if ($localStorage.cacheTimestamp){
@@ -68,7 +79,9 @@ angular.module('mwgaApp')
                     $scope.showInvalidCity = false;
                 } else {
                     $scope.showInvalidCity = true;
-                    console.log('City is invalid. Not in the USA.');
+                    $scope.invalidMessage = invalidCity.getMessage();
+                    console.log('City is invalid. Not in the USA. ' + $scope.invalidMessage);
+
                 }
             });
         }

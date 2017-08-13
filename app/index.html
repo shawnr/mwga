@@ -14,6 +14,10 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.css" />
+    <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.min.css" />
+    <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons-wind.css" />
+    <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons-wind.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -25,11 +29,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <h1>Make the Weather Great Again!</h1>
-    <p class="lead">REAL Weather for REAL Americans!</p>
-
-    <div class="container">
+    <div class="header">
+      <h1 class="title-text">Make the Weather Great Again</h1>
+      <p class="lead title-text">REAL Weather for REAL Americans</p>
+    </div>
+    <div class="container app-content">
     <div ng-view=""></div>
     </div>
 
@@ -75,6 +79,8 @@
         <script src="scripts/services/current.js"></script>
         <script src="scripts/services/forecast.js"></script>
         <script src="scripts/services/citycheck.js"></script>
+        <script src="scripts/services/invalidcity.js"></script>
+        <script src="scripts/services/weathertext.js"></script>
         <!-- endbuild -->
 </body>
 </html>
