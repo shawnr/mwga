@@ -8,7 +8,7 @@
  * Factory in the mwgaApp.
  */
 angular.module('mwgaApp')
-  .factory('forecast', function ($resource) {
+  .factory('forecast', function ($resource, weatherText) {
     // Service logic
     // ...
 
@@ -19,7 +19,15 @@ angular.module('mwgaApp')
         params:{
           cityID: '524901' // Moscow, Russia
         },
-        isArray:false
+        isArray:false,
+        transformResponse: function(data, headers){
+          var weatherData = angular.fromJson(data);
+          for (var currPrediction of weatherData.list){
+              currPrediction.weather[0].description = weatherText.getWeatherDescription(currPrediction.weather[0].id);
+              console.log('updated FORECAST description to: ' + currPrediction.weather[0].description);
+          }
+          return weatherData;
+        }
       }
     });
   });
