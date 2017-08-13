@@ -22,7 +22,7 @@ angular.module('mwgaApp')
         isArray:false,
         transformResponse: function(data, headers){
           var weatherData = angular.fromJson(data);
-          for (var currPrediction of weatherData.list){
+          for (currPrediction of weatherData.list){
               currPrediction.weather[0].description = weatherText.getWeatherDescription(currPrediction.weather[0].id);
               console.log('updated FORECAST description to: ' + currPrediction.weather[0].description);
           }
