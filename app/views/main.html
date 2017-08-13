@@ -33,4 +33,11 @@
   <p><button ng-click="openForecast()" class="btn btn-block btn-primary">View Current REAL Weather</button></p>
 </div>
 
+<div class="invalid-city" ng-show="showInvalidCity">
+  <h2>The City You Have Entered is Not in the USA!</h2>
+  <p class="lead">They probably don't even have weather over there. Please search for a different city.</p>
+</div>
+
 <p ng-show="!showSearch"><button class="btn btn-block btn-primary" ng-click="openSearch()">Get REAL Weather Information for Another City</button></p>
+
+
