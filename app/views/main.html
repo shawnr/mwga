@@ -1,37 +1,36 @@
 <div class="search" ng-show="showSearch">
-  <p class="form"><input type="text" ng-model="city" placeholder="Enter city name."> <button ng-click="openCurrent()" class="btn btn-large btn-primary">Get REAL Weather!</button></p>
+  <form ng-submit="openCurrent()"><input type="text" ng-model="city" placeholder="Enter city name."> <button ng-click="openCurrent()" class="btn btn-large btn-primary">Get REAL Weather!</button></form>
   <p>(American cities only, please.)</p>
 </div>
 
 <div class="current" ng-show="showCurrent">
-  <h2>The REAL Weather for: {{city | uppercase}}</h2>
-  <dl>
-    <dt>Currently</dt>
-    <dd><i class="wi wi-owm-{{currDayTime}}-{{current.weather[0].id}}"></i></dd>
-    <dd>{{current.weather[0].main}}</dd>
-    <dd>{{current.weather[0].description}}</dd>
-    <dt>Temperature</dt>
-    <dd>{{current.main.temp}}</dd>
-    <dt>Wind</dt>
-    <dd>{{current.wind.speed}} mph at {{current.wind.deg}} degrees</dd>
-    <dt>Clouds</dt>
-    <dd>{{current.clouds.all}}%</dd>
-  </dl>
-  <p><button ng-click="openForecast()" class="btn btn-block btn-primary">View Full REAL Forecast</button></p>
+  <p class="weather-icon"><i class="wi wi-owm-{{currDayTime}}-{{current.weather[0].id}}"></i></p>
+  <h2>In {{city | uppercase}} it is currently...</h2>
+  <p class="weather-summary">{{current.weather[0].main}}</p>
+  <p class="weather-description">{{current.weather[0].description}}</p>
+  <p class="weather-curr-temp"><b>Current Temp</b> {{current.main.temp}} &deg;F</p>
+  <p class="weather-wind-speed"><b>Wind</b> {{current.wind.speed}} mph at {{current.wind.deg}} degrees</p>
+  <p class="weather-clouds"><b>Cloud Coverage</b> {{current.clouds.all}}%</p>
+  <p class="forecast-button-holder"><button ng-click="openForecast()" class="btn btn-block btn-primary">View Full Forecast</button></p>
 </div>
 
 
 <div class="forecast" ng-show="showForecast">
-  <h2>The REAL Forecast for: {{city | uppercase}}</h2>
-  <dl ng-repeat="prediction in forecast.list" class="weather-forecast">
-    <dt>Forecast for {{prediction.dt*1000 | date:'MMM dd, yyyy'}}</dt>
-    <dd><i class="wi wi-owm-{{currDayTime}}-{{prediction.weather[0].id}}"></i></dd>
-    <dd>{{prediction.weather[0].main}}</dd>
-    <dd>{{prediction.weather[0].description}}</dd>
-    <dt>Temperature</dt>
-    <dd>Min: {{prediction.temp.min}} &deg;F Max: {{prediction.temp.max}} &deg;F</dd>
-  </dl>
-  <p><button ng-click="openForecast()" class="btn btn-block btn-primary">View Current REAL Weather</button></p>
+  <h2>The 12-day Forecast for: {{city | uppercase}}</h2>
+  <ul id="forecast-list">
+    <li ng-repeat="prediction in forecast.list | limitTo: 12" class="weather-forecast">
+      <div class="forecast-content">
+        <p class="forecast-date">{{prediction.dt*1000 | date:'MMM dd, yyyy'}}</p>
+        <p class="forecast-temps"><b>Low</b> {{prediction.temp.min}} &deg;F <b>High</b> {{prediction.temp.max}} &deg;F</p>
+
+        <p class="forecast-summary">{{prediction.weather[0].main}}</p>
+        <p class="forecast-icon"><i class="wi wi-owm-{{currDayTime}}-{{prediction.weather[0].id}}"></i></p>
+
+        <p class="forecast-description">{{prediction.weather[0].description}}</p>
+      </div>
+    </li>
+  </ul>
+  <p><button ng-click="openForecast()" class="btn btn-block btn-primary">Back to Current Conditions</button></p>
 </div>
 
 <div class="invalid-city" ng-show="showInvalidCity">
@@ -45,6 +44,6 @@
   <p class="lead">You must enter the name of an American city to find weather information.</p>
 </div>
 
-<p ng-show="!showSearch"><button class="btn btn-block btn-primary" ng-click="openSearch()">Get REAL Weather Information for Another City</button></p>
+<p ng-show="!showSearch"><a class="new-search" ng-click="openSearch()"><i class="wi wi-cloud-refresh"></i> View Weather Conditions for Another City</a></p>
 
 
