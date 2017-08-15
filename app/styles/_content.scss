@@ -239,76 +239,7 @@ html {
   }
 }
 
-@keyframes fallingStars {
-  0% {
-    width: 80px;
-    height: 80px;
-    opacity: 1;
 
-  -webkit-transform: translate(0, 0px) rotateZ(0deg);
-  }
-  75% {
-    width: 80px;
-    height: 80px;
-    opacity: 1;
-
-  -webkit-transform: translate(100px, 500px) rotateZ(270deg);
-  }
-  100% {
-    width: 80px;
-    height: 80px;
-    opacity: 0;
-
-  -webkit-transform: translate(150px, 700px) rotateZ(360deg);
-  }
-}
-
-@-webkit-keyframes fallingStars {
-  0% {
-    width: 80px;
-    height: 80px;
-    opacity: 1;
-
-  -webkit-transform: translate(0, 0px) rotateZ(0deg);
-  }
-  75% {
-    width: 80px;
-    height: 80px;
-    opacity: 1;
-
-  -webkit-transform: translate(100px, 500px) rotateZ(270deg);
-  }
-  100% {
-    width: 80px;
-    height: 80px;
-    opacity: 0;
-
-  -webkit-transform: translate(150px, 700px) rotateZ(360deg);
-  }
-}
-@-moz-keyframes fallingStars {
-  0% {
-    width: 80px;
-    height: 80px;
-    opacity: 1;
-
-  -webkit-transform: translate(0, 0px) rotateZ(0deg);
-  }
-  75% {
-    width: 80px;
-    height: 80px;
-    opacity: 1;
-
-  -webkit-transform: translate(100px, 500px) rotateZ(270deg);
-  }
-  100% {
-    width: 80px;
-    height: 80px;
-    opacity: 0;
-
-  -webkit-transform: translate(150px, 700px) rotateZ(360deg);
-  }
-}
 
 #content-wrapper {
   z-index: 100;
