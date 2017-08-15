@@ -1,4 +1,74 @@
+h1, h2 {
+  font-weight: 300;
+}
+.curl .putin {
+  width: 240px;
+  height: 240px;
+  transition: all .5s ease;
+  background: url(../images/putin.jpg) 0 0 no-repeat;
+  background-size: cover;
+  -webkit-clip-path: polygon(0 0, 0 10px, 10px 0);
+  clip-path: polygon(0 0, 0 10px, 10px 0);
+}
+.curl:hover .putin {
 
+  -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+
+}
+.curl {
+  width:10px;
+  height:10px;
+  position: absolute;
+  top:0;
+  left:0;
+  background :
+    linear-gradient(
+      135deg,
+      #fff,
+      #f3f3f3 45%,
+      #ddd 50%,
+      #aaa 50%,
+      #bbb 56%,
+      #ccc 62%,
+      #f3f3f3 80%,
+      #fff 100%
+    );
+  box-shadow : 0 0 10px rgba(0, 0, 0, .5);
+  transition: all .5s ease;
+  text-indent: -9999px;
+}
+.curl:before,
+.curl:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 12.5%;
+  bottom: 5.8%;
+  width: 70%;
+  max-width: 300px;
+  max-height: 100px;
+  height: 55%;
+  box-shadow: 0 12px 15px rgba(0, 0, 0, .3);
+  transform: skew(-10deg) rotate(-6deg);
+}
+.curl:after {
+  left: auto;
+  right: 5.8%;
+  bottom: auto;
+  top: 14.16%;
+  transform: skew(-15deg) rotate(-84deg);
+}
+
+.curl:hover {
+  width: 240px;
+  height: 240px;
+  text-indent: 0;
+}
+.curl:hover:before,
+.curl:hover:after {
+  box-shadow: 0 24px 30px rgba(0, 0, 0, .3);
+}
 #forecast-list {
   list-style-type: none;
   padding-left: 0;
@@ -203,8 +273,8 @@ html {
   }
   span:nth-child(5n+5) {
 
-      -webkit-animation-delay: 3.3s;
-      -moz-animation-delay: 3.3s;
+      -webkit-animation-delay: 1s;
+      -moz-animation-delay: 1s;
   }
   span:nth-child(3n+2) {
 
