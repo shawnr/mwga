@@ -7,8 +7,6 @@
   display: flex;
   flex-wrap: wrap;
 
-
-
   li {
     display: flex;
     padding: 0.5em;
@@ -191,6 +189,7 @@ html {
   min-width: 100vw;
   min-height: 100%;
   opacity: 0.1;
+  margin-top: -200px;
 
   span {
     display: inline-block;
