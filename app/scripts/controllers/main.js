@@ -33,7 +33,7 @@ angular.module('mwgaApp')
         var nowTime = new Date(now);
         var timeDelta = Math.round((nowTime - cacheTime) / (60 * 1000));
         if (timeDelta > 10){
-            console.log('Cache is expired. Refreshing.');
+            // console.log('Cache is expired. Refreshing.');
             $scope.current = current.query();
             $scope.current.$promise.then(function(data){
                 $localStorage.currentCache = data;
@@ -44,13 +44,13 @@ angular.module('mwgaApp')
             });
             $localStorage.cacheTimestamp = now;
         } else {
-            console.log('Cache is still fresh. Loading from local storage.');
+            // console.log('Cache is still fresh. Loading from local storage.');
             $scope.current = $localStorage.currentCache;
             $scope.forecast = $localStorage.forecastCache;
         }
 
     } else {
-        console.log('Cache does not exist. Creating.');
+        // console.log('Cache does not exist. Creating.');
         $scope.current = current.query();
         $scope.current.$promise.then(function(data){
             $localStorage.currentCache = data;
@@ -72,7 +72,7 @@ angular.module('mwgaApp')
             $scope.cityCheck = citycheck.query({location: $scope.city});
             $scope.cityCheck.$promise.then(function(data){
                 if (data.sys.country==='US'){
-                    console.log('City is in the USA.');
+                    // console.log('City is in the USA.');
                     $scope.showSearch = false;
                     $scope.showForecast = false;
                     $scope.showCurrent = true;
@@ -80,7 +80,7 @@ angular.module('mwgaApp')
                 } else {
                     $scope.showInvalidCity = true;
                     $scope.invalidMessage = invalidCity.getMessage();
-                    console.log('City is invalid. Not in the USA. ' + $scope.invalidMessage);
+                    // console.log('City is invalid. Not in the USA. ' + $scope.invalidMessage);
 
                 }
             });

@@ -262,15 +262,15 @@ angular.module('mwgaApp')
         // Verify we got a unique line (if possible).
         if (usedText.indexOf(returnMessage) === -1) {
           // This is an acceptable new message.
-          console.log('Successful text selection: ' + returnMessage);
+          //console.log('Successful text selection: ' + returnMessage);
           usedText.push(returnMessage);
           stopTrying = true;
         } else {
           if (textCounter < tryLimit){
             textCounter++;
-            console.log('Trying again to select good text.');
+            //console.log('Trying again to select good text.');
           } else {
-            console.log('Hit try limit. Going with: ' + returnMessage);
+            //console.log('Hit try limit. Going with: ' + returnMessage);
             stopTrying = true;
           }
         }
