@@ -24,7 +24,6 @@ angular.module('mwgaApp')
           var weatherData = angular.fromJson(data);
           for (var i=0; i<weatherData.list.length; i++){
               weatherData.list[i].weather[0].description = weatherText.getWeatherDescription(weatherData.list[i].weather[0].id);
-              console.log('updated FORECAST description to: ' + weatherData.list[i].weather[0].description);
           }
           return weatherData;
         }

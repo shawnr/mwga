@@ -162,79 +162,124 @@ angular.module('mwgaApp')
         "A terrible day for golf. And America.",
         "I have stopped more hail during my administration than any other US President. Only Mussolini ranked higher than me!"
       ]
-    }
-
+    };
+    var usedText = [];
     var mapText = function(id){
       var returnMessage = "The weather there is going to be very unknown. Unknowable even. Who really knows? Nobody. But we're gonna figure it out.";
       // id should be weather condition ID from OWM.org
+      var textCounter = 0;
+      var stopTrying = false;
+      var tryLimit = 0;
+      while (!stopTrying){
+        if ([232, 231, 202, 201, 200].indexOf(id) >= 0){
+          // thunderstorm 232, 231, 202, 201, 200
+          tryLimit = weatherMessages.thunderstorm.length;
+          returnMessage = weatherMessages.thunderstorm[Math.floor(Math.random()*weatherMessages.thunderstorm.length)];
+        } else if ([221, 212, 211, 210].indexOf(id) >= 0){
+          // lightning 221, 212, 211, 210
+          tryLimit = weatherMessages.lightning.length;
+          returnMessage = weatherMessages.lightning[Math.floor(Math.random()*weatherMessages.lightning.length)];
+        } else if ([500, 321, 301, 300].indexOf(id) >= 0){
+          // sprinkle 500, 321, 301, 300
+          tryLimit = weatherMessages.sprinkle.length;
+          returnMessage = weatherMessages.sprinkle[Math.floor(Math.random()*weatherMessages.sprinkle.length)];
+        } else if ([500, 321, 301, 300].indexOf(id) >= 0){
+          // rain 504, 503, 502, 501, 314, 312, 311, 302
+          tryLimit = weatherMessages.rain.length;
+          returnMessage = weatherMessages.rain[Math.floor(Math.random()*weatherMessages.rain.length)];
+        } else if ([620, 616, 615, 612, 611, 511, 310].indexOf(id) >= 0){
+          // rain-mix 620, 616, 615, 612, 611, 511, 310
+          tryLimit = weatherMessages.rainMix.length;
+          returnMessage = weatherMessages.rainMix[Math.floor(Math.random()*weatherMessages.rainMix.length)];
+        } else if ([701, 522, 521, 520, 313].indexOf(id) >= 0){
+          // showers 701, 522, 521, 520, 313
+          tryLimit = weatherMessages.showers.length;
+          returnMessage = weatherMessages.showers[Math.floor(Math.random()*weatherMessages.showers.length)];
+        } else if ([901, 521].indexOf(id) >= 0){
+          // storm-showers 901, 521
+          tryLimit = weatherMessages.stormShowers.length;
+          returnMessage = weatherMessages.stormShowers[Math.floor(Math.random()*weatherMessages.stormShowers.length)];
+        } else if ([903, 622, 621, 601, 600].indexOf(id) >= 0){
+          // snow 903, 622, 621, 601, 600
+          tryLimit = weatherMessages.snow.length;
+          returnMessage = weatherMessages.snow[Math.floor(Math.random()*weatherMessages.snow.length)];
+        } else if ([602].indexOf(id) >= 0){
+          // sleet 602
+          tryLimit = weatherMessages.sleet.length;
+          returnMessage = weatherMessages.sleet[Math.floor(Math.random()*weatherMessages.sleet.length)];
+        } else if ([711].indexOf(id) >= 0){
+          // smoke 711
+          tryLimit = weatherMessages.smoke.length;
+          returnMessage = weatherMessages.smoke[Math.floor(Math.random()*weatherMessages.smoke.length)];
+        } else if ([711].indexOf(id) >= 0){
+          // day-haze 721
+          tryLimit = weatherMessages.dayHaze.length;
+          returnMessage = weatherMessages.dayHaze[Math.floor(Math.random()*weatherMessages.dayHaze.length)];
+        } else if ([762, 761, 731].indexOf(id) >= 0){
+          // dust 762, 761, 731
+          tryLimit = weatherMessages.dust.length;
+          returnMessage = weatherMessages.dust[Math.floor(Math.random()*weatherMessages.dust.length)];
+        } else if ([741].indexOf(id) >= 0){
+          // fog 741
+          tryLimit = weatherMessages.fog.length;
+          returnMessage = weatherMessages.fog[Math.floor(Math.random()*weatherMessages.fog.length)];
+        } else if ([801, 802, 803, 771].indexOf(id) >= 0){
+          // cloudy-gusts 801, 802, 803, 771
+          tryLimit = weatherMessages.cloudyGusts.length;
+          returnMessage = weatherMessages.cloudyGusts[Math.floor(Math.random()*weatherMessages.cloudyGusts.length)];
+        } else if ([900, 781].indexOf(id) >= 0){
+          // tornado 900, 781
+          tryLimit = weatherMessages.tornado.length;
+          returnMessage = weatherMessages.tornado[Math.floor(Math.random()*weatherMessages.tornado.length)];
+        } else if ([800].indexOf(id) >= 0){
+          // day-sunny 800
+          tryLimit = weatherMessages.daySunny.length;
+          returnMessage = weatherMessages.daySunny[Math.floor(Math.random()*weatherMessages.daySunny.length)];
+        } else if ([804].indexOf(id) >= 0){
+          // cloudy 804
+          tryLimit = weatherMessages.cloudy.length;
+          returnMessage = weatherMessages.cloudy[Math.floor(Math.random()*weatherMessages.cloudy.length)];
+        } else if ([902].indexOf(id) >= 0){
+          // hurricane 902
+          tryLimit = weatherMessages.hurricane.length;
+          returnMessage = weatherMessages.hurricane[Math.floor(Math.random()*weatherMessages.hurricane.length)];
+        } else if ([904].indexOf(id) >= 0){
+          // hot 904
+          tryLimit = weatherMessages.hot.length;
+          returnMessage = weatherMessages.hot[Math.floor(Math.random()*weatherMessages.hot.length)];
+        } else if ([957, 905].indexOf(id) >= 0){
+          // windy 957, 905
+          tryLimit = weatherMessages.windy.length;
+          returnMessage = weatherMessages.windy[Math.floor(Math.random()*weatherMessages.windy.length)];
+        } else if ([906].indexOf(id) >= 0){
+          // hail 906
+          tryLimit = weatherMessages.hail.length;
+          returnMessage = weatherMessages.hail[Math.floor(Math.random()*weatherMessages.hail.length)];
+        } else {
+          stopTrying = true;
+        }
 
+        // Verify we got a unique line (if possible).
+        if (usedText.indexOf(returnMessage) === -1) {
+          // This is an acceptable new message.
+          console.log('Successful text selection: ' + returnMessage);
+          usedText.push(returnMessage);
+          stopTrying = true;
+        } else {
+          if (textCounter < tryLimit){
+            textCounter++;
+            console.log('Trying again to select good text.');
+          } else {
+            console.log('Hit try limit. Going with: ' + returnMessage);
+            stopTrying = true;
+          }
+        }
 
-      if ([232, 231, 202, 201, 200].indexOf(id) >= 0){
-        // thunderstorm 232, 231, 202, 201, 200
-        returnMessage = weatherMessages.thunderstorm[Math.floor(Math.random()*weatherMessages.thunderstorm.length)];
-      } else if ([221, 212, 211, 210].indexOf(id) >= 0){
-        // lightning 221, 212, 211, 210
-        returnMessage = weatherMessages.lightning[Math.floor(Math.random()*weatherMessages.lightning.length)];
-      } else if ([500, 321, 301, 300].indexOf(id) >= 0){
-        // sprinkle 500, 321, 301, 300
-        returnMessage = weatherMessages.sprinkle[Math.floor(Math.random()*weatherMessages.sprinkle.length)];
-      } else if ([500, 321, 301, 300].indexOf(id) >= 0){
-        // rain 504, 503, 502, 501, 314, 312, 311, 302
-        returnMessage = weatherMessages.rain[Math.floor(Math.random()*weatherMessages.rain.length)];
-      } else if ([620, 616, 615, 612, 611, 511, 310].indexOf(id) >= 0){
-        // rain-mix 620, 616, 615, 612, 611, 511, 310
-        returnMessage = weatherMessages.rainMix[Math.floor(Math.random()*weatherMessages.rainMix.length)];
-      } else if ([701, 522, 521, 520, 313].indexOf(id) >= 0){
-        // showers 701, 522, 521, 520, 313
-        returnMessage = weatherMessages.showers[Math.floor(Math.random()*weatherMessages.showers.length)];
-      } else if ([901, 521].indexOf(id) >= 0){
-        // storm-showers 901, 521
-        returnMessage = weatherMessages.stormShowers[Math.floor(Math.random()*weatherMessages.stormShowers.length)];
-      } else if ([903, 622, 621, 601, 600].indexOf(id) >= 0){
-        // snow 903, 622, 621, 601, 600
-        returnMessage = weatherMessages.snow[Math.floor(Math.random()*weatherMessages.snow.length)];
-      } else if ([602].indexOf(id) >= 0){
-        // sleet 602
-        returnMessage = weatherMessages.sleet[Math.floor(Math.random()*weatherMessages.sleet.length)];
-      } else if ([711].indexOf(id) >= 0){
-        // smoke 711
-        returnMessage = weatherMessages.smoke[Math.floor(Math.random()*weatherMessages.smoke.length)];
-      } else if ([711].indexOf(id) >= 0){
-        // day-haze 721
-        returnMessage = weatherMessages.dayHaze[Math.floor(Math.random()*weatherMessages.dayHaze.length)];
-      } else if ([762, 761, 731].indexOf(id) >= 0){
-        // dust 762, 761, 731
-        returnMessage = weatherMessages.dust[Math.floor(Math.random()*weatherMessages.dust.length)];
-      } else if ([741].indexOf(id) >= 0){
-        // fog 741
-        returnMessage = weatherMessages.fog[Math.floor(Math.random()*weatherMessages.fog.length)];
-      } else if ([801, 802, 803, 771].indexOf(id) >= 0){
-        // cloudy-gusts 801, 802, 803, 771
-        returnMessage = weatherMessages.cloudyGusts[Math.floor(Math.random()*weatherMessages.cloudyGusts.length)];
-      } else if ([900, 781].indexOf(id) >= 0){
-        // tornado 900, 781
-        returnMessage = weatherMessages.tornado[Math.floor(Math.random()*weatherMessages.tornado.length)];
-      } else if ([800].indexOf(id) >= 0){
-        // day-sunny 800
-        returnMessage = weatherMessages.daySunny[Math.floor(Math.random()*weatherMessages.daySunny.length)];
-      } else if ([804].indexOf(id) >= 0){
-        // cloudy 804
-        returnMessage = weatherMessages.cloudy[Math.floor(Math.random()*weatherMessages.cloudy.length)];
-      } else if ([902].indexOf(id) >= 0){
-        // hurricane 902
-        returnMessage = weatherMessages.hurricane[Math.floor(Math.random()*weatherMessages.hurricane.length)];
-      } else if ([904].indexOf(id) >= 0){
-        // hot 904
-        returnMessage = weatherMessages.hot[Math.floor(Math.random()*weatherMessages.hot.length)];
-      } else if ([957, 905].indexOf(id) >= 0){
-        // windy 957, 905
-        returnMessage = weatherMessages.windy[Math.floor(Math.random()*weatherMessages.windy.length)];
-      } else if ([906].indexOf(id) >= 0){
-        // hail 906
-        returnMessage = weatherMessages.hail[Math.floor(Math.random()*weatherMessages.hail.length)];
       }
+
+
       return returnMessage;
-    }
+    };
 
     // Public API here
     return {

@@ -41,7 +41,7 @@ angular.module('mwgaApp')
             $scope.forecast = forecast.query();
             $scope.forecast.$promise.then(function(data){
                 $localStorage.forecastCache = data;
-            })
+            });
             $localStorage.cacheTimestamp = now;
         } else {
             console.log('Cache is still fresh. Loading from local storage.');
@@ -58,7 +58,7 @@ angular.module('mwgaApp')
         $scope.forecast = forecast.query();
         $scope.forecast.$promise.then(function(data){
             $localStorage.forecastCache = data;
-        })
+        });
         $localStorage.cacheTimestamp = now;
     }
 
@@ -85,17 +85,17 @@ angular.module('mwgaApp')
                 }
             });
         }
-    }
+    };
     $scope.openForecast = function(){
         $scope.showSearch = false;
         $scope.showCurrent = false;
         $scope.showForecast = true;
         $scope.showInvalidCity = false;
-    }
+    };
     $scope.openSearch = function(){
         $scope.showSearch = true;
         $scope.showCurrent = false;
         $scope.showForecast = false;
         $scope.showInvalidCity = false;
-    }
+    };
   });
