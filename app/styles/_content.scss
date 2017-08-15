@@ -6,7 +6,7 @@ h1, h2 {
   height: 240px;
   transition: all .5s ease;
   background: url(../images/putin.jpg) 0 0 no-repeat;
-  background-size: cover;
+  background-size: 105%;
   -webkit-clip-path: polygon(0 0, 0 10px, 10px 0);
   clip-path: polygon(0 0, 0 10px, 10px 0);
 }
