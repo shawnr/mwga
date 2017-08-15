@@ -34,7 +34,7 @@
 
     <div id="content-wrapper">
       <div class="header">
-        <div class="curl"><p class="putin"></p></div>
+        <div class="curl" id="curl-container"><p class="putin"></p></div>
         <h1 class="title-text"><a href=".">Make the Weather Great Again</a></h1>
         <p class="lead title-text">REAL Weather for REAL Americans</p>
       </div>
@@ -88,5 +88,20 @@
         <script src="scripts/services/invalidcity.js"></script>
         <script src="scripts/services/weathertext.js"></script>
         <!-- endbuild -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function(event){
+        var curlTab = document.querySelector('#curl-container');
+        curlTab.addEventListener('touchstart', openCurl);
+
+        function openCurl(event){
+          event.target.classList.add('hover');
+          document.addEventListener('touchstart', closeCurl);
+        }
+        function closeCurl(event){
+          curlTab.classList.remove('hover');
+          document.removeEventListener('touchstart', closeCurl);
+        }
+      });
+    </script>
 </body>
 </html>

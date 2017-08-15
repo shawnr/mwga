@@ -10,7 +10,7 @@ h1, h2 {
   -webkit-clip-path: polygon(0 0, 0 10px, 10px 0);
   clip-path: polygon(0 0, 0 10px, 10px 0);
 }
-.curl:hover .putin {
+.curl:hover .putin, .curl.hover .putin {
 
   -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
   clip-path: polygon(0 0, 0% 100%, 100% 0);
@@ -36,7 +36,6 @@ h1, h2 {
     );
   box-shadow : 0 0 10px rgba(0, 0, 0, .5);
   transition: all .5s ease;
-  text-indent: -9999px;
 }
 .curl:before,
 .curl:after {
@@ -60,13 +59,12 @@ h1, h2 {
   transform: skew(-15deg) rotate(-84deg);
 }
 
-.curl:hover {
+.curl:hover, .curl.hover {
   width: 240px;
   height: 240px;
-  text-indent: 0;
 }
-.curl:hover:before,
-.curl:hover:after {
+.curl:hover:before, .curl.hover:before
+.curl:hover:after, .curl.hover:after {
   box-shadow: 0 24px 30px rgba(0, 0, 0, .3);
 }
 #forecast-list {
