@@ -78,6 +78,7 @@ angular.module('mwgaApp')
                     $scope.showCurrent = true;
                     $scope.showInvalidCity = false;
                 } else {
+                    $scope.badCity = data.name;
                     $scope.showInvalidCity = true;
                     $scope.invalidMessage = invalidCity.getMessage();
                     // console.log('City is invalid. Not in the USA. ' + $scope.invalidMessage);
