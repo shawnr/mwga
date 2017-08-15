@@ -8,14 +8,14 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');</script> <script src="scripts/vendor.e1da6798.js"></script> <script src="scripts/scripts.6888825b.js"></script> <script>document.addEventListener('DOMContentLoaded', function(event){
         var curlTab = document.querySelector('#curl-container');
-        curlTab.addEventListener('touchstart', openCurl);
+        curlTab.addEventListener('click', openCurl);
 
         function openCurl(event){
           event.target.classList.add('hover');
-          document.addEventListener('touchstart', closeCurl);
+          document.addEventListener('click', closeCurl);
         }
         function closeCurl(event){
           curlTab.classList.remove('hover');
-          document.removeEventListener('touchstart', closeCurl);
+          document.removeEventListener('click', closeCurl);
         }
       });</script> </body> </html>
