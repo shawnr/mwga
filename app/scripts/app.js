@@ -10,6 +10,7 @@
  */
 angular
   .module('mwgaApp', [
+    '720kb.socialshare',
     'ngAnimate',
     'ngAria',
     'ngCookies',
