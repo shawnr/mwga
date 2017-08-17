@@ -24,6 +24,11 @@ angular.module('mwgaApp')
           var weatherData = angular.fromJson(data);
           for (var i=0; i<weatherData.list.length; i++){
               weatherData.list[i].weather[0].description = weatherText.getWeatherDescription(weatherData.list[i].weather[0].id);
+              if (weatherData.list[i].weather[0].id === 800 && weatherData.list[i].speed<15){
+                weatherData.list[i].weather[0].golf = true;
+              } else {
+                weatherData.list[i].weather[0].golf = false;
+              }
           }
           return weatherData;
         }

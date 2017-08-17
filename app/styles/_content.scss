@@ -168,6 +168,13 @@ h1, h2 {
   .forecast-temps {
     font-size: 1.5rem;
   }
+  .forecast-golf {
+    font-size: 1.5rem;
+    align-items: flex-end;
+    background: #fff;
+    padding: 5px;
+    color: #314db9;
+  }
 }
 
 .current {
@@ -193,6 +200,12 @@ h1, h2 {
   }
   .weather-wind-speed {
     font-size: 1.8rem;
+  }
+  .weather-golf {
+    font-size: 1.8rem;
+    background: #fff;
+    padding: 5px;
+    color: #314db9;
   }
   b {
     font-weight: 400;
