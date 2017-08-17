@@ -8,8 +8,8 @@
   <h2>In {{city | uppercase}} it is currently...</h2>
   <p class="weather-summary">{{current.weather[0].main}}</p>
   <p class="weather-description">{{current.weather[0].description}}</p>
-  <p class="weather-curr-temp"><b>Current Temp</b> {{current.main.temp}} &deg;F</p>
-  <p class="weather-wind-speed"><b>Wind</b> {{current.wind.speed}} mph at {{current.wind.deg}} degrees</p>
+  <p class="weather-curr-temp"><b>Current Temp</b> {{current.main.temp}}&deg; F</p>
+  <p class="weather-wind-speed"><b>Wind</b> {{current.wind.speed}} mph {{current.wind.dir}}</p>
   <p class="weather-golf" ng-show="current.golf">It's a great day to play golf! <i class="fa fa-thumbs-up"></i></p>
   <p class="forecast-button-holder"><button ng-click="openForecast()" class="btn btn-block btn-primary">View Full Forecast</button></p>
   <ul class="socialshare">
@@ -36,7 +36,7 @@
     <li ng-repeat="prediction in forecast.list | limitTo: 12" class="weather-forecast">
       <div class="forecast-content">
         <p class="forecast-date">{{prediction.dt*1000 | date:'MMM dd, yyyy'}}</p>
-        <p class="forecast-temps"><b>Low</b> {{prediction.temp.min}} &deg;F <b>High</b> {{prediction.temp.max}} &deg;F</p>
+        <p class="forecast-temps"><b>Low</b> {{prediction.temp.min}}&deg; F <b>High</b> {{prediction.temp.max}}&deg; F</p>
 
         <p class="forecast-summary">{{prediction.weather[0].main}}</p>
         <p class="forecast-icon"><i class="wi wi-owm-{{currDayTime}}-{{prediction.weather[0].id}}"></i></p>
