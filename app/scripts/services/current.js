@@ -26,7 +26,9 @@ angular.module('mwgaApp')
         // console.log('updated CURRENT description to: ' + weatherData.weather[0].description);
         if (weatherData.weather[0].id === 800 && weatherData.wind.speed<15 && weatherData.main.temp > 58){
           weatherData.golf = true;
+          console.log('Good weather for golf.');
         } else {
+          console.log('Bad weather for golf.');
           weatherData.golf = false;
         }
         return weatherData;

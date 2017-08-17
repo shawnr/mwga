@@ -429,6 +429,7 @@ module.exports = function (grunt) {
             'CNAME',
             'mwga-screen.png',
             'font/*.*',
+            'fonts/*.*',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
           ]
