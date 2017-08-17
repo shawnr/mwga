@@ -20,6 +20,9 @@ angular.module('mwgaApp')
     $scope.invalidMessage = '';
     $scope.weatherText = weatherText;
 
+    // console logs
+    console.log('Загрузка данных'); // Loading data
+
     $scope.currHour = (new Date()).getHours();
     if ($scope.currHour > 5 && $scope.currHour < 17) {
         $scope.currDayTime = 'day';
@@ -43,10 +46,12 @@ angular.module('mwgaApp')
                 $localStorage.forecastCache = data;
             });
             $localStorage.cacheTimestamp = now;
+            console.log('Данные получены'); // Data Recieved
         } else {
             // console.log('Cache is still fresh. Loading from local storage.');
             $scope.current = $localStorage.currentCache;
             $scope.forecast = $localStorage.forecastCache;
+            console.log('Полученные данные'); // Data Recieved
         }
 
     } else {
@@ -60,10 +65,12 @@ angular.module('mwgaApp')
             $localStorage.forecastCache = data;
         });
         $localStorage.cacheTimestamp = now;
+        console.log('Полученные данные'); // Data Recieved
     }
 
     $scope.openCurrent = function(){
         $scope.dataLoading = true;
+        console.log('Загружать данные'); // Loading data
 
         if (!$scope.city){
             $scope.showNoQuery = true;
@@ -71,6 +78,7 @@ angular.module('mwgaApp')
             $scope.showNoQuery = false;
             $scope.cityCheck = citycheck.query({location: $scope.city});
             $scope.cityCheck.$promise.then(function(data){
+                console.log('Загружать данные'); // Data Recieved
                 if (data.sys.country==='US'){
                     // console.log('City is in the USA.');
                     $scope.showSearch = false;
