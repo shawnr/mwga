@@ -12,41 +12,20 @@
   <p class="weather-wind-speed"><b>Wind</b> {{current.wind.speed}} mph at {{current.wind.deg}} degrees</p>
   <p class="forecast-button-holder"><button ng-click="openForecast()" class="btn btn-block btn-primary">View Full Forecast</button></p>
   <ul class="socialshare">
-          <li class="share-text">
-            Share the Great Weather:
-          </li>
-          <li>
-            <a class="share-button twitter"
-              socialshare
-              socialshare-provider="twitter"
-              socialshare-text="{{current.weather[0].description | limitTo:85}}{{current.weather[0].description.length > 85 ? '...' : ''}}"
-              socialshare-hashtags="MWGA"
-              socialshare-url="http://maketheweathergreatagain.com">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a class="share-button facebook"
-              socialshare
-              socialshare-provider="facebook"
-              socialshare-type="share"
-              socialshare-via="111248819554768"
-              socialshare-quote="{{current.weather[0].description}}"
-              socialshare-hashtags="MWGA"
-              socialshare-mobileiframe="true">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a class="share-button tumblr"
-              socialshare
-              socialshare-provider="tumblr"
-              socialshare-text="{{current.weather[0].description}}"
-              socialshare-url="http://maketheweathergreatagain.com">
-              <i class="fa fa-tumblr"></i>
-            </a>
-          </li>
-        </ul>
+    <li class="share-text">
+      Tweet the Great Weather:
+    </li>
+    <li>
+      <a class="share-button twitter"
+        socialshare
+        socialshare-provider="twitter"
+        socialshare-text="{{current.weather[0].description | limitTo:85}}{{current.weather[0].description.length > 85 ? '...' : ''}}"
+        socialshare-hashtags="MWGA"
+        socialshare-url="http://maketheweathergreatagain.com">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+  </ul>
 </div>
 
 
